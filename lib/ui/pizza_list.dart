@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria/models/pizza.dart';
 import 'package:pizzeria/models/pizza_data.dart';
+import 'package:pizzeria/ui/pizza_details.dart';
+import 'package:pizzeria/ui/share/buy_button_widget.dart';
 
 class PizzaList extends StatefulWidget {
   const PizzaList({Key? key}) : super(key: key);
@@ -24,7 +26,7 @@ class _PizzaListState extends State<PizzaList> {
         title: Text('Nos Pizzas'),
       ),
       body: ListView.builder(
-        //padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         //itemExtent: ,
         itemCount: _pizzas.length,
         itemBuilder: (context, index) {
@@ -46,7 +48,19 @@ class _PizzaListState extends State<PizzaList> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PizzaDetails(pizza),
+                  )
+              ); //Navigator
+            },
+            child: _buildPizzaDetails(pizza),
+          ),
+          BuyButtonWidget(),
+     /*     ListTile(
             title: Text(pizza.title),
             subtitle: Text(pizza.garniture),
             leading: Icon(Icons.local_pizza),
@@ -62,12 +76,12 @@ class _PizzaListState extends State<PizzaList> {
             padding: const EdgeInsets.all(4.0),
             child: Text(pizza.garniture),
           ),
-          /*ElevatedButton(
+          *//*ElevatedButton(
             child: Text("Commander"),
             onPressed: () {
               print('Commander une pizza');
             },
-          )*/
+          )*//*
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -87,10 +101,38 @@ class _PizzaListState extends State<PizzaList> {
                 },
               )
             ],
-          ),
+          ),*/
         ],
       )
     );
 
   }
+
+  _buildPizzaDetails(Pizza pizza) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+          title: Text(pizza.title),
+          subtitle: Text(pizza.garniture),
+          leading: Icon(Icons.local_pizza),
+        ),
+        Image.asset(
+          'assets/images/pizzas/${pizza.image}',
+          height: 120,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.fitWidth,
+        ),
+        //Text(pizza.garniture),
+        Container(
+          padding: const EdgeInsets.all(4.0),
+          child: Text(pizza.garniture),
+        ),
+      ],
+    );
+
+  }
+
+
+
 }
