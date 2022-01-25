@@ -124,9 +124,8 @@ class _PanierState extends State<Panier> {
                 Text('${cartItem.quantity}', style: PizzeriaStyle.itemPriceTextStye,),
                 IconButton(onPressed: () {
                   setState(() {
-                    if(cartItem.quantity == 1)
                     widget._cart.removeProduct(cartItem.pizza);
-                  else cartItem.quantity--;});
+                  });
                   }, icon: const Icon(Icons.remove))
               ],
             ),

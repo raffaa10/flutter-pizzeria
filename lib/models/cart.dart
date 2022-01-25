@@ -30,9 +30,14 @@ class Cart {
   }
   
   void removeProduct(Pizza pizza) {
-        int index = findCartItemIndex(pizza.id);
-    if (index != -1) {
-      _items.removeAt(index);
+    int index = findCartItemIndex(pizza.id);
+
+    if(_items[index].quantity > 0) {
+      CartItem item = _items[index];
+      item.quantity--;
+      if (item.quantity == 0) {
+        _items.removeAt(index);
+      }
     }
   }
   
