@@ -14,7 +14,7 @@ class PizzeriaStyle {
   );
 
   static final TextStyle regularTextStyle = baseTextStyle.copyWith(
-    fontSize: 18.0,
+    fontSize: 20.0,
   );
 
   static final TextStyle subHeaderTextStyle = baseTextStyle.copyWith(
