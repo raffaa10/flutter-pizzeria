@@ -4,7 +4,17 @@ import 'package:http/http.dart' as http;
 
 class PizzeriaService {
 
-  static final String uri = 'http://172.17.32.1:8000/api';
+  //static final String uri = 'http://172.17.64.1:8099/api';
+  //static final String uri = 'http://172.17.32.1:8000/api';
+  //static final String uri = 'http://localhost:80/api/';
+
+  static final String uri = 'http://192.168.1.19:80/api';
+
+  /* Dans le fichier index.php
+  * - Il faut supprimer la ligne : $json[] = array();
+  * - et ajouter cette ligne à la fin echo json_encode($json);
+  * - dans url d'image il faut changer sur http://192.168.1.19:80/
+  */
 
   Future<List<Pizza>> fetchPizzas() async {
 

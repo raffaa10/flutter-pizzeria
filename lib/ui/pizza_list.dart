@@ -91,8 +91,8 @@ class _PizzaListState extends State<PizzaList> {
           subtitle: Text(pizza.garniture),
           leading: Icon(Icons.local_pizza),
         ),
-        Image.asset(
-          'assets/images/pizzas/${pizza.image}',
+        Image.network(
+          '${pizza.image}',
           height: 120,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.fitWidth,

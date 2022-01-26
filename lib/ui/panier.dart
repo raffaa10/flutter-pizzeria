@@ -74,8 +74,8 @@ class _PanierState extends State<Panier> {
             //width: MediaQuery.of(context).size.width * 0.25,
             decoration: BoxDecoration(color: Colors.blue.shade100,
                 border: Border.all(color: Colors.grey.shade300)),
-            child: Image.asset(
-              'assets/images/pizzas/${cartItem.pizza.image}',
+            child: Image.network(
+              '${cartItem.pizza.image}',
               height: 140,
             ),
           ),
