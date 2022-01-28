@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:pizzeria/models/pizza.dart';
 
 class CartItem {
@@ -9,7 +10,7 @@ class CartItem {
   
 }
 
-class Cart {
+class Cart extends ChangeNotifier {
 
   List<CartItem> _items = [];
   
@@ -27,6 +28,7 @@ class Cart {
       CartItem item = _items[index];
       item.quantity++;
     }
+    notifyListeners();
   }
   
   void removeProduct(Pizza pizza) {
@@ -39,6 +41,7 @@ class Cart {
         _items.removeAt(index);
       }
     }
+    notifyListeners();
   }
   
   int findCartItemIndex(int id) {

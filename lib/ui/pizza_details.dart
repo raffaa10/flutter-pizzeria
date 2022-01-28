@@ -4,6 +4,7 @@ import 'package:pizzeria/models/cart.dart';
 import 'package:pizzeria/models/option_item.dart';
 import 'package:pizzeria/models/pizza.dart';
 import 'package:pizzeria/ui/share/appbar_widget.dart';
+import 'package:pizzeria/ui/share/bottom_nav_bar_widget.dart';
 import 'package:pizzeria/ui/share/buy_button_widget.dart';
 import 'package:pizzeria/ui/share/pizzeria_style.dart';
 import 'package:pizzeria/ui/share/total_widget.dart';
@@ -62,9 +63,11 @@ class _PizzaDetailsState extends State<PizzaDetails> {
           ),
           _buildDropDownSauces(),
           TotalWidget(widget._pizza.total),
-          BuyButtonWidget(widget._pizza, widget._cart),
+          BuyButtonWidget(widget._pizza),
+
         ],
       ),
+      bottomNavigationBar: BottomNavBarWidget(widget._cart.totalItems()),
     );
   }
 

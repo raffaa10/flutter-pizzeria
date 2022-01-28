@@ -21,7 +21,7 @@ class AppBarWidget extends StatelessWidget
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Panier(_cart),
+                  builder: (context) => Panier(),
                 )
               );
             },

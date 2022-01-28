@@ -1,13 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzeria/ui/panier.dart';
 import 'package:pizzeria/ui/pizza_list.dart';
 import 'package:pizzeria/ui/share/appbar_widget.dart';
+import 'package:pizzeria/ui/share/bottom_nav_bar_widget.dart';
 import 'models/cart.dart';
 import 'models/menu.dart';
+import 'package:provider/provider.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      ChangeNotifierProvider(
+      create: (context) => Cart(),
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +39,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Notre pizzeria'),
+      routes: {
+        //'/profil': (context) => Profil(),
+        '/panier': (context) => Panier(),
+        '/pizza_list': (context) => PizzaList(new Cart()), // Routing vers PizzaList
+      },
     );
   }
 }
@@ -73,6 +86,7 @@ class MyHomePage extends StatelessWidget {
           itemExtent: 180,
         ),
       ),
+      bottomNavigationBar: BottomNavBarWidget(_cart.totalItems()),
     );
   }
 

@@ -4,15 +4,17 @@ import 'package:http/http.dart' as http;
 
 class PizzeriaService {
 
-  //static final String uri = 'http://172.17.64.1:8099/api';
+  //static final String uri = 'http://172.17.64.1:8099/api'; // Docker-compose apache2
   //static final String uri = 'http://172.17.32.1:8000/api';
   //static final String uri = 'http://localhost:80/api/';
 
-  static final String uri = 'http://192.168.1.19:80/api';
+  //static final String uri = 'http://192.168.1.19:80/api'; // IPv4 domicile
+
+  static final String uri = 'http://192.168.186.1:80/api'; // IPv4 EPSI
 
   /* Dans le fichier index.php
   * - Il faut supprimer la ligne : $json[] = array();
-  * - et ajouter cette ligne à la fin echo json_encode($json);
+  * - et ajouter cette ligne à la fin : echo json_encode($json);
   * - dans url d'image il faut changer sur http://192.168.1.19:80/
   */
 

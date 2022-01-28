@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzeria/models/cart.dart';
 import 'package:pizzeria/models/pizza.dart';
-import 'package:pizzeria/models/pizza_data.dart';
 import 'package:pizzeria/services/pizzeria_service.dart';
 import 'package:pizzeria/ui/pizza_details.dart';
 import 'package:pizzeria/ui/share/appbar_widget.dart';
+import 'package:pizzeria/ui/share/bottom_nav_bar_widget.dart';
 import 'package:pizzeria/ui/share/buy_button_widget.dart';
 import 'package:pizzeria/ui/share/pizzeria_style.dart';
 
@@ -18,14 +18,12 @@ class PizzaList extends StatefulWidget {
 }
 
 class _PizzaListState extends State<PizzaList> {
-  //List<Pizza> _pizzas = [];
 
   late Future<List<Pizza>> _pizzasWS;
   PizzeriaService _service = PizzeriaService();
 
   @override
   void initState() {
-    //_pizzas = PizzaData.buildList();
     _pizzasWS = _service.fetchPizzas();
   }
 
@@ -49,6 +47,7 @@ class _PizzaListState extends State<PizzaList> {
           return Center(child: CircularProgressIndicator());
         },
       ),
+      bottomNavigationBar: BottomNavBarWidget(widget._cart.totalItems()),
     );
   }
 
@@ -75,7 +74,7 @@ class _PizzaListState extends State<PizzaList> {
             },
             child: _buildPizzaDetails(pizza),
           ),
-          BuyButtonWidget(pizza, widget._cart),
+          BuyButtonWidget(pizza),
         ],
       )
     );
